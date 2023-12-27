@@ -4,3 +4,18 @@
 [submodule "lib/openzeppelin-contracts"]
 	path = lib/openzeppelin-contracts
 	url = https://github.com/openzeppelin/openzeppelin-contracts
+[submodule "lib/uniswapV2-periphery"]
+	path = lib/uniswapV2-periphery
+	url = https://github.com/Uniswap/v2-periphery
+[submodule "lib/uniswapV2-core"]
+	path = lib/uniswapV2-core
+	url = https://github.com/Uniswap/v2-core
+[submodule "lib/foundry-chainlink-toolkit"]
+	path = lib/foundry-chainlink-toolkit
+	url = https://github.com/smartcontractkit/foundry-chainlink-toolkit
+[submodule "lib/chainlink-brownie-contracts"]
+	path = lib/chainlink-brownie-contracts
+	url = https://github.com/smartcontractkit/chainlink-brownie-contracts
+[submodule "lib/prb-math"]
+	path = lib/prb-math
+	url = https://github.com/paulrberg/prb-math

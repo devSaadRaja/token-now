@@ -1,0 +1,5 @@
+@openzeppelin/=lib/openzeppelin-contracts/
+@uniswap/periphery/=lib/uniswapV2-periphery
+@uniswap/core/=lib/uniswapV2-core
+@chainlink/=lib/chainlink-brownie-contracts
+@prb/math/=lib/prb-math/src/

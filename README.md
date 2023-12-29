@@ -15,6 +15,12 @@ https://book.getfoundry.sh/
 
 ## Usage
 
+### Install
+
+```shell
+$ forge install
+```
+
 ### Build
 
 ```shell
@@ -45,10 +51,18 @@ $ forge snapshot
 $ anvil
 ```
 
+### Mainnet Test
+
+```shell
+$ forge test --fork-url "<your_rpc_url>" --match-path test/Counter.t.sol -vv
+```
+
 ### Deploy
 
 ```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+$ forge create --rpc-url "<your_rpc_url>" --private-key "<your_private_key>" <filePath> --constructor-args <> --etherscan-api-key <> --verify
+or
+$ forge script script/Counter.s.sol:CounterScript --rpc-url "<your_rpc_url>" --private-key "<your_private_key>"
 ```
 
 ### Cast

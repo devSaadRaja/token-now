@@ -58,7 +58,7 @@ contract RealEstateTokenTest is Test {
 
     function testGrantMinterRole() public {
         vm.startPrank(owner);
-        token.grantRole(token.MINTER_ROLE(), user1);
+        token.addMinter(user1);
         vm.stopPrank();
 
         vm.startPrank(user1);

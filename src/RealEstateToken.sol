@@ -7,6 +7,8 @@ import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol";
 contract RealEstateToken is ERC1155URIStorage, Ownable {
     // =================== STRUCTURE =================== //
 
+    string public contractURI;
+
     mapping(address => bool) minters;
 
     // =================== MODIFIERS =================== //
@@ -34,6 +36,10 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
 
     function removeMinter(address minter) external onlyOwner {
         minters[minter] = false;
+    }
+
+    function setContractURI(string memory _uri) external onlyOwner {
+        contractURI = _uri;
     }
 
     function setBaseURI(string memory newuri) external onlyOwner {

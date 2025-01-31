@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol";
 contract RealEstateToken is ERC1155URIStorage, Ownable {
     // =================== STRUCTURE =================== //
 
+    string public contractID;
     string public contractURI;
 
     mapping(address => bool) minters;
@@ -20,7 +21,8 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
 
     // =================== CONSTRUCTOR =================== //
 
-    constructor() ERC1155("") Ownable(msg.sender) {
+    constructor(string memory id) ERC1155("") Ownable(msg.sender) {
+        contractID = id;
         minters[msg.sender] = true;
     }
 

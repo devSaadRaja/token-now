@@ -26,9 +26,9 @@ contract RealEstateTokenTest is Test {
         // uint256 tokenId = 1;
         // uint256 amount = 10;
         // token.mint(user1, tokenId, amount, "", data);
-        token.mint(user1, 10001, 1, "", "");
-        token.mint(user1, 10001001, 1, "", "");
-        token.mint(user1, 10001001001, 1, "", "");
+        token.mint(user1, 10001, 1, "abc", "");
+        token.mint(user1, 10001001, 1, "abc", "");
+        token.mint(user1, 10001001001, 1, "abc", "");
 
         // assertEq(token.balanceOf(user1, 1), 10);
 

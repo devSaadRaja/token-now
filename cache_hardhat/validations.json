@@ -1,0 +1,2897 @@
+{
+  "version": "3.4",
+  "log": [
+    {
+      "@openzeppelin/contracts/access/Ownable.sol:Ownable": {
+        "src": "@openzeppelin/contracts/access/Ownable.sol:20",
+        "inherit": [
+          "@openzeppelin/contracts/utils/Context.sol:Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "owner()",
+          "renounceOwnership()",
+          "transferOwnership(address)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Ownable",
+            "src": "@openzeppelin/contracts/access/Ownable.sol:38"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_owner",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_address",
+              "contract": "Ownable",
+              "src": "@openzeppelin/contracts/access/Ownable.sol:21"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/interfaces/draft-IERC6093.sol:IERC1155Errors": {
+        "src": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol:113",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/interfaces/draft-IERC6093.sol:IERC20Errors": {
+        "src": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol:9",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/interfaces/draft-IERC6093.sol:IERC721Errors": {
+        "src": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol:55",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:ERC1155": {
+        "src": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:19",
+        "inherit": [
+          "@openzeppelin/contracts/interfaces/draft-IERC6093.sol:IERC1155Errors",
+          "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol:IERC1155MetadataURI",
+          "@openzeppelin/contracts/token/ERC1155/IERC1155.sol:IERC1155",
+          "@openzeppelin/contracts/utils/introspection/ERC165.sol:ERC165",
+          "@openzeppelin/contracts/utils/introspection/IERC165.sol:IERC165",
+          "@openzeppelin/contracts/utils/Context.sol:Context"
+        ],
+        "libraries": [
+          "@openzeppelin/contracts/utils/Arrays.sol:Arrays"
+        ],
+        "methods": [
+          "supportsInterface(bytes4)",
+          "uri(uint256)",
+          "balanceOf(address,uint256)",
+          "balanceOfBatch(address[],uint256[])",
+          "setApprovalForAll(address,bool)",
+          "isApprovedForAll(address,address)",
+          "safeTransferFrom(address,address,uint256,uint256,bytes)",
+          "safeBatchTransferFrom(address,address,uint256[],uint256[],bytes)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "ERC1155",
+            "src": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:33"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_balances",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_mapping(t_uint256,t_mapping(t_address,t_uint256))",
+              "contract": "ERC1155",
+              "src": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:23"
+            },
+            {
+              "label": "_operatorApprovals",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+              "contract": "ERC1155",
+              "src": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:25"
+            },
+            {
+              "label": "_uri",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_string_storage",
+              "contract": "ERC1155",
+              "src": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:28"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+              "label": "mapping(address => mapping(address => bool))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(uint256 => mapping(address => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/token/ERC1155/IERC1155.sol:IERC1155": {
+        "src": "@openzeppelin/contracts/token/ERC1155/IERC1155.sol:12",
+        "inherit": [
+          "@openzeppelin/contracts/utils/introspection/IERC165.sol:IERC165"
+        ],
+        "libraries": [],
+        "methods": [
+          "balanceOf(address,uint256)",
+          "balanceOfBatch(address[],uint256[])",
+          "setApprovalForAll(address,bool)",
+          "isApprovedForAll(address,address)",
+          "safeTransferFrom(address,address,uint256,uint256,bytes)",
+          "safeBatchTransferFrom(address,address,uint256[],uint256[],bytes)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol:IERC1155Receiver": {
+        "src": "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol:12",
+        "inherit": [
+          "@openzeppelin/contracts/utils/introspection/IERC165.sol:IERC165"
+        ],
+        "libraries": [],
+        "methods": [
+          "onERC1155Received(address,address,uint256,uint256,bytes)",
+          "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol:ERC1155URIStorage": {
+        "src": "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol:13",
+        "inherit": [
+          "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:ERC1155",
+          "@openzeppelin/contracts/interfaces/draft-IERC6093.sol:IERC1155Errors",
+          "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol:IERC1155MetadataURI",
+          "@openzeppelin/contracts/token/ERC1155/IERC1155.sol:IERC1155",
+          "@openzeppelin/contracts/utils/introspection/ERC165.sol:ERC165",
+          "@openzeppelin/contracts/utils/introspection/IERC165.sol:IERC165",
+          "@openzeppelin/contracts/utils/Context.sol:Context"
+        ],
+        "libraries": [
+          "@openzeppelin/contracts/utils/Strings.sol:Strings"
+        ],
+        "methods": [
+          "uri(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "state-variable-assignment",
+            "name": "_baseURI",
+            "src": "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol:17"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_balances",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_mapping(t_uint256,t_mapping(t_address,t_uint256))",
+              "contract": "ERC1155",
+              "src": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:23"
+            },
+            {
+              "label": "_operatorApprovals",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+              "contract": "ERC1155",
+              "src": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:25"
+            },
+            {
+              "label": "_uri",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_string_storage",
+              "contract": "ERC1155",
+              "src": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:28"
+            },
+            {
+              "label": "_baseURI",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_string_storage",
+              "contract": "ERC1155URIStorage",
+              "src": "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol:17"
+            },
+            {
+              "label": "_tokenURIs",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_string_storage)",
+              "contract": "ERC1155URIStorage",
+              "src": "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol:20"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+              "label": "mapping(address => mapping(address => bool))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(uint256 => mapping(address => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_string_storage)": {
+              "label": "mapping(uint256 => string)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol:IERC1155MetadataURI": {
+        "src": "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol:12",
+        "inherit": [
+          "@openzeppelin/contracts/token/ERC1155/IERC1155.sol:IERC1155",
+          "@openzeppelin/contracts/utils/introspection/IERC165.sol:IERC165"
+        ],
+        "libraries": [],
+        "methods": [
+          "uri(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/utils/Arrays.sol:Arrays": {
+        "src": "@openzeppelin/contracts/utils/Arrays.sol:12",
+        "version": {
+          "withMetadata": "d40c29c03814e2a09c0b604113de9f4492a4721d4ce6d57e5c4580b56a365abe",
+          "withoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f",
+          "linkedWithoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f"
+        },
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts/utils/StorageSlot.sol:StorageSlot",
+          "@openzeppelin/contracts/utils/math/Math.sol:Math"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/utils/Context.sol:Context": {
+        "src": "@openzeppelin/contracts/utils/Context.sol:16",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/utils/StorageSlot.sol:StorageSlot": {
+        "src": "@openzeppelin/contracts/utils/StorageSlot.sol:31",
+        "version": {
+          "withMetadata": "d40c29c03814e2a09c0b604113de9f4492a4721d4ce6d57e5c4580b56a365abe",
+          "withoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f",
+          "linkedWithoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/utils/Strings.sol:Strings": {
+        "src": "@openzeppelin/contracts/utils/Strings.sol:12",
+        "version": {
+          "withMetadata": "d40c29c03814e2a09c0b604113de9f4492a4721d4ce6d57e5c4580b56a365abe",
+          "withoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f",
+          "linkedWithoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f"
+        },
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts/utils/math/Math.sol:Math",
+          "@openzeppelin/contracts/utils/math/SignedMath.sol:SignedMath"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/utils/introspection/ERC165.sol:ERC165": {
+        "src": "@openzeppelin/contracts/utils/introspection/ERC165.sol:20",
+        "inherit": [
+          "@openzeppelin/contracts/utils/introspection/IERC165.sol:IERC165"
+        ],
+        "libraries": [],
+        "methods": [
+          "supportsInterface(bytes4)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/utils/introspection/IERC165.sol:IERC165": {
+        "src": "@openzeppelin/contracts/utils/introspection/IERC165.sol:15",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "supportsInterface(bytes4)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/utils/math/Math.sol:Math": {
+        "src": "@openzeppelin/contracts/utils/math/Math.sol:9",
+        "version": {
+          "withMetadata": "d40c29c03814e2a09c0b604113de9f4492a4721d4ce6d57e5c4580b56a365abe",
+          "withoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f",
+          "linkedWithoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "@openzeppelin/contracts/utils/math/SignedMath.sol:SignedMath": {
+        "src": "@openzeppelin/contracts/utils/math/SignedMath.sol:9",
+        "version": {
+          "withMetadata": "d40c29c03814e2a09c0b604113de9f4492a4721d4ce6d57e5c4580b56a365abe",
+          "withoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f",
+          "linkedWithoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "ds-test/test.sol:DSTest": {
+        "src": "ds-test/test.sol:18",
+        "version": {
+          "withMetadata": "5c37736a7d98be6a7bb4568d6fc3cd30cade1d7a17c8b9c7c9275f9b487e13c8",
+          "withoutMetadata": "f20d92f22d5356ed720ce4fb206b2bfad23599d4667bfc2e3987cd10e04c20ce",
+          "linkedWithoutMetadata": "f20d92f22d5356ed720ce4fb206b2bfad23599d4667bfc2e3987cd10e04c20ce"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "failed()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "state-variable-assignment",
+            "name": "IS_TEST",
+            "src": "ds-test/test.sol:38"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "IS_TEST",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "DSTest",
+              "src": "ds-test/test.sol:38"
+            },
+            {
+              "label": "_failed",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "DSTest",
+              "src": "ds-test/test.sol:39"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/Base.sol:CommonBase": {
+        "src": "forge-std/Base.sol:7",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "stdstore",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_struct(StdStorage)11870_storage",
+              "contract": "CommonBase",
+              "src": "forge-std/Base.sol:28"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_bytes32)dyn_storage": {
+              "label": "bytes32[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_bytes4": {
+              "label": "bytes4",
+              "numberOfBytes": "4"
+            },
+            "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool)))": {
+              "label": "mapping(address => mapping(bytes4 => mapping(bytes32 => bool)))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256)))": {
+              "label": "mapping(address => mapping(bytes4 => mapping(bytes32 => uint256)))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes32,t_bool)": {
+              "label": "mapping(bytes32 => bool)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes32,t_uint256)": {
+              "label": "mapping(bytes32 => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool))": {
+              "label": "mapping(bytes4 => mapping(bytes32 => bool))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256))": {
+              "label": "mapping(bytes4 => mapping(bytes32 => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_struct(StdStorage)11870_storage": {
+              "label": "struct StdStorage",
+              "members": [
+                {
+                  "label": "slots",
+                  "type": "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256)))",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "finds",
+                  "type": "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool)))",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "_keys",
+                  "type": "t_array(t_bytes32)dyn_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "_sig",
+                  "type": "t_bytes4",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "_depth",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "_target",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "_set",
+                  "type": "t_bytes32",
+                  "offset": 0,
+                  "slot": "6"
+                }
+              ],
+              "numberOfBytes": "224"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/Base.sol:ScriptBase": {
+        "src": "forge-std/Base.sol:33",
+        "inherit": [
+          "forge-std/Base.sol:CommonBase"
+        ],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "stdstore",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_struct(StdStorage)11870_storage",
+              "contract": "CommonBase",
+              "src": "forge-std/Base.sol:28"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_bytes32)dyn_storage": {
+              "label": "bytes32[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_bytes4": {
+              "label": "bytes4",
+              "numberOfBytes": "4"
+            },
+            "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool)))": {
+              "label": "mapping(address => mapping(bytes4 => mapping(bytes32 => bool)))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256)))": {
+              "label": "mapping(address => mapping(bytes4 => mapping(bytes32 => uint256)))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes32,t_bool)": {
+              "label": "mapping(bytes32 => bool)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes32,t_uint256)": {
+              "label": "mapping(bytes32 => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool))": {
+              "label": "mapping(bytes4 => mapping(bytes32 => bool))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256))": {
+              "label": "mapping(bytes4 => mapping(bytes32 => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_struct(StdStorage)11870_storage": {
+              "label": "struct StdStorage",
+              "members": [
+                {
+                  "label": "slots",
+                  "type": "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256)))",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "finds",
+                  "type": "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool)))",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "_keys",
+                  "type": "t_array(t_bytes32)dyn_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "_sig",
+                  "type": "t_bytes4",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "_depth",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "_target",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "_set",
+                  "type": "t_bytes32",
+                  "offset": 0,
+                  "slot": "6"
+                }
+              ],
+              "numberOfBytes": "224"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/Base.sol:TestBase": {
+        "src": "forge-std/Base.sol:31",
+        "inherit": [
+          "forge-std/Base.sol:CommonBase"
+        ],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "stdstore",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_struct(StdStorage)11870_storage",
+              "contract": "CommonBase",
+              "src": "forge-std/Base.sol:28"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_bytes32)dyn_storage": {
+              "label": "bytes32[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_bytes4": {
+              "label": "bytes4",
+              "numberOfBytes": "4"
+            },
+            "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool)))": {
+              "label": "mapping(address => mapping(bytes4 => mapping(bytes32 => bool)))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256)))": {
+              "label": "mapping(address => mapping(bytes4 => mapping(bytes32 => uint256)))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes32,t_bool)": {
+              "label": "mapping(bytes32 => bool)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes32,t_uint256)": {
+              "label": "mapping(bytes32 => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool))": {
+              "label": "mapping(bytes4 => mapping(bytes32 => bool))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256))": {
+              "label": "mapping(bytes4 => mapping(bytes32 => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_struct(StdStorage)11870_storage": {
+              "label": "struct StdStorage",
+              "members": [
+                {
+                  "label": "slots",
+                  "type": "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256)))",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "finds",
+                  "type": "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool)))",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "_keys",
+                  "type": "t_array(t_bytes32)dyn_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "_sig",
+                  "type": "t_bytes4",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "_depth",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "_target",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "_set",
+                  "type": "t_bytes32",
+                  "offset": 0,
+                  "slot": "6"
+                }
+              ],
+              "numberOfBytes": "224"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/StdAssertions.sol:StdAssertions": {
+        "src": "forge-std/StdAssertions.sol:7",
+        "inherit": [
+          "ds-test/test.sol:DSTest"
+        ],
+        "libraries": [
+          "forge-std/StdMath.sol:stdMath"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "IS_TEST",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "DSTest",
+              "src": "ds-test/test.sol:38"
+            },
+            {
+              "label": "_failed",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "DSTest",
+              "src": "ds-test/test.sol:39"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/StdChains.sol:StdChains": {
+        "src": "forge-std/StdChains.sol:34",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "state-variable-assignment",
+            "name": "fallbackToDefaultRpcUrls",
+            "src": "forge-std/StdChains.sol:66"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "stdChainsInitialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "StdChains",
+              "src": "forge-std/StdChains.sol:37"
+            },
+            {
+              "label": "chains",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_mapping(t_string_memory_ptr,t_struct(Chain)7202_storage)",
+              "contract": "StdChains",
+              "src": "forge-std/StdChains.sol:60"
+            },
+            {
+              "label": "defaultRpcUrls",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_mapping(t_string_memory_ptr,t_string_storage)",
+              "contract": "StdChains",
+              "src": "forge-std/StdChains.sol:62"
+            },
+            {
+              "label": "idToAlias",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_uint256,t_string_storage)",
+              "contract": "StdChains",
+              "src": "forge-std/StdChains.sol:64"
+            },
+            {
+              "label": "fallbackToDefaultRpcUrls",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_bool",
+              "contract": "StdChains",
+              "src": "forge-std/StdChains.sol:66"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_string_memory_ptr,t_string_storage)": {
+              "label": "mapping(string => string)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_string_memory_ptr,t_struct(Chain)7202_storage)": {
+              "label": "mapping(string => struct StdChains.Chain)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_string_storage)": {
+              "label": "mapping(uint256 => string)",
+              "numberOfBytes": "32"
+            },
+            "t_string_memory_ptr": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Chain)7202_storage": {
+              "label": "struct StdChains.Chain",
+              "members": [
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "chainId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "chainAlias",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "rpcUrl",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                }
+              ],
+              "numberOfBytes": "128"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/StdCheats.sol:StdCheats": {
+        "src": "forge-std/StdCheats.sol:639",
+        "inherit": [
+          "forge-std/StdCheats.sol:StdCheatsSafe"
+        ],
+        "libraries": [
+          "forge-std/StdStorage.sol:stdStorage"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "gasMeteringOff",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "StdCheatsSafe",
+              "src": "forge-std/StdCheats.sol:16"
+            },
+            {
+              "label": "stdstore",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_struct(StdStorage)11870_storage",
+              "contract": "StdCheats",
+              "src": "forge-std/StdCheats.sol:642"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_bytes32)dyn_storage": {
+              "label": "bytes32[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_bytes4": {
+              "label": "bytes4",
+              "numberOfBytes": "4"
+            },
+            "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool)))": {
+              "label": "mapping(address => mapping(bytes4 => mapping(bytes32 => bool)))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256)))": {
+              "label": "mapping(address => mapping(bytes4 => mapping(bytes32 => uint256)))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes32,t_bool)": {
+              "label": "mapping(bytes32 => bool)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes32,t_uint256)": {
+              "label": "mapping(bytes32 => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool))": {
+              "label": "mapping(bytes4 => mapping(bytes32 => bool))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256))": {
+              "label": "mapping(bytes4 => mapping(bytes32 => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_struct(StdStorage)11870_storage": {
+              "label": "struct StdStorage",
+              "members": [
+                {
+                  "label": "slots",
+                  "type": "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256)))",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "finds",
+                  "type": "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool)))",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "_keys",
+                  "type": "t_array(t_bytes32)dyn_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "_sig",
+                  "type": "t_bytes4",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "_depth",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "_target",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "_set",
+                  "type": "t_bytes32",
+                  "offset": 0,
+                  "slot": "6"
+                }
+              ],
+              "numberOfBytes": "224"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/StdCheats.sol:StdCheatsSafe": {
+        "src": "forge-std/StdCheats.sol:10",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "gasMeteringOff",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "StdCheatsSafe",
+              "src": "forge-std/StdCheats.sol:16"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/StdError.sol:stdError": {
+        "src": "forge-std/StdError.sol:5",
+        "version": {
+          "withMetadata": "f6f75c921d27cda038d2eafa4bd0a077707d89f7ed36a59fd5123533eb3c3204",
+          "withoutMetadata": "1d896e92795ccbcf38590279dd730a875f4c10953e76578600f7c60806dcc08d",
+          "linkedWithoutMetadata": "1d896e92795ccbcf38590279dd730a875f4c10953e76578600f7c60806dcc08d"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/StdInvariant.sol:StdInvariant": {
+        "src": "forge-std/StdInvariant.sol:6",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "excludeArtifacts()",
+          "excludeContracts()",
+          "excludeSenders()",
+          "targetArtifacts()",
+          "targetArtifactSelectors()",
+          "targetContracts()",
+          "targetSelectors()",
+          "targetSenders()",
+          "targetInterfaces()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_excludedContracts",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:17"
+            },
+            {
+              "label": "_excludedSenders",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:18"
+            },
+            {
+              "label": "_targetedContracts",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:19"
+            },
+            {
+              "label": "_targetedSenders",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:20"
+            },
+            {
+              "label": "_excludedArtifacts",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_array(t_string_storage)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:22"
+            },
+            {
+              "label": "_targetedArtifacts",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_array(t_string_storage)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:23"
+            },
+            {
+              "label": "_targetedArtifactSelectors",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_array(t_struct(FuzzSelector)10854_storage)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:25"
+            },
+            {
+              "label": "_targetedSelectors",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_array(t_struct(FuzzSelector)10854_storage)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:26"
+            },
+            {
+              "label": "_targetedInterfaces",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_array(t_struct(FuzzInterface)10860_storage)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:28"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_bytes4)dyn_storage": {
+              "label": "bytes4[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_string_storage)dyn_storage": {
+              "label": "string[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_struct(FuzzInterface)10860_storage)dyn_storage": {
+              "label": "struct StdInvariant.FuzzInterface[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_struct(FuzzSelector)10854_storage)dyn_storage": {
+              "label": "struct StdInvariant.FuzzSelector[]",
+              "numberOfBytes": "32"
+            },
+            "t_bytes4": {
+              "label": "bytes4",
+              "numberOfBytes": "4"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(FuzzInterface)10860_storage": {
+              "label": "struct StdInvariant.FuzzInterface",
+              "members": [
+                {
+                  "label": "addr",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "artifacts",
+                  "type": "t_array(t_string_storage)dyn_storage",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_struct(FuzzSelector)10854_storage": {
+              "label": "struct StdInvariant.FuzzSelector",
+              "members": [
+                {
+                  "label": "addr",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "selectors",
+                  "type": "t_array(t_bytes4)dyn_storage",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/StdJson.sol:stdJson": {
+        "src": "forge-std/StdJson.sol:29",
+        "version": {
+          "withMetadata": "d40c29c03814e2a09c0b604113de9f4492a4721d4ce6d57e5c4580b56a365abe",
+          "withoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f",
+          "linkedWithoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/StdMath.sol:stdMath": {
+        "src": "forge-std/StdMath.sol:4",
+        "version": {
+          "withMetadata": "d40c29c03814e2a09c0b604113de9f4492a4721d4ce6d57e5c4580b56a365abe",
+          "withoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f",
+          "linkedWithoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/StdStorage.sol:stdStorage": {
+        "src": "forge-std/StdStorage.sol:234",
+        "version": {
+          "withMetadata": "d40c29c03814e2a09c0b604113de9f4492a4721d4ce6d57e5c4580b56a365abe",
+          "withoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f",
+          "linkedWithoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f"
+        },
+        "inherit": [],
+        "libraries": [
+          "forge-std/StdStorage.sol:stdStorageSafe"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/StdStorage.sol:stdStorageSafe": {
+        "src": "forge-std/StdStorage.sol:16",
+        "version": {
+          "withMetadata": "d40c29c03814e2a09c0b604113de9f4492a4721d4ce6d57e5c4580b56a365abe",
+          "withoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f",
+          "linkedWithoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/StdStyle.sol:StdStyle": {
+        "src": "forge-std/StdStyle.sol:6",
+        "version": {
+          "withMetadata": "d40c29c03814e2a09c0b604113de9f4492a4721d4ce6d57e5c4580b56a365abe",
+          "withoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f",
+          "linkedWithoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/StdUtils.sol:StdUtils": {
+        "src": "forge-std/StdUtils.sol:11",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/Test.sol:Test": {
+        "src": "forge-std/Test.sol:30",
+        "inherit": [
+          "forge-std/StdUtils.sol:StdUtils",
+          "forge-std/StdInvariant.sol:StdInvariant",
+          "forge-std/StdCheats.sol:StdCheats",
+          "forge-std/StdCheats.sol:StdCheatsSafe",
+          "forge-std/StdChains.sol:StdChains",
+          "forge-std/StdAssertions.sol:StdAssertions",
+          "ds-test/test.sol:DSTest",
+          "forge-std/Base.sol:TestBase",
+          "forge-std/Base.sol:CommonBase"
+        ],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "stdstore",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_struct(StdStorage)11870_storage",
+              "contract": "CommonBase",
+              "src": "forge-std/Base.sol:28"
+            },
+            {
+              "label": "IS_TEST",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_bool",
+              "contract": "DSTest",
+              "src": "ds-test/test.sol:38"
+            },
+            {
+              "label": "_failed",
+              "offset": 1,
+              "slot": "7",
+              "type": "t_bool",
+              "contract": "DSTest",
+              "src": "ds-test/test.sol:39"
+            },
+            {
+              "label": "stdChainsInitialized",
+              "offset": 2,
+              "slot": "7",
+              "type": "t_bool",
+              "contract": "StdChains",
+              "src": "forge-std/StdChains.sol:37"
+            },
+            {
+              "label": "chains",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_mapping(t_string_memory_ptr,t_struct(Chain)7202_storage)",
+              "contract": "StdChains",
+              "src": "forge-std/StdChains.sol:60"
+            },
+            {
+              "label": "defaultRpcUrls",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_mapping(t_string_memory_ptr,t_string_storage)",
+              "contract": "StdChains",
+              "src": "forge-std/StdChains.sol:62"
+            },
+            {
+              "label": "idToAlias",
+              "offset": 0,
+              "slot": "10",
+              "type": "t_mapping(t_uint256,t_string_storage)",
+              "contract": "StdChains",
+              "src": "forge-std/StdChains.sol:64"
+            },
+            {
+              "label": "fallbackToDefaultRpcUrls",
+              "offset": 0,
+              "slot": "11",
+              "type": "t_bool",
+              "contract": "StdChains",
+              "src": "forge-std/StdChains.sol:66"
+            },
+            {
+              "label": "gasMeteringOff",
+              "offset": 1,
+              "slot": "11",
+              "type": "t_bool",
+              "contract": "StdCheatsSafe",
+              "src": "forge-std/StdCheats.sol:16"
+            },
+            {
+              "label": "stdstore",
+              "offset": 0,
+              "slot": "12",
+              "type": "t_struct(StdStorage)11870_storage",
+              "contract": "StdCheats",
+              "src": "forge-std/StdCheats.sol:642"
+            },
+            {
+              "label": "_excludedContracts",
+              "offset": 0,
+              "slot": "19",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:17"
+            },
+            {
+              "label": "_excludedSenders",
+              "offset": 0,
+              "slot": "20",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:18"
+            },
+            {
+              "label": "_targetedContracts",
+              "offset": 0,
+              "slot": "21",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:19"
+            },
+            {
+              "label": "_targetedSenders",
+              "offset": 0,
+              "slot": "22",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:20"
+            },
+            {
+              "label": "_excludedArtifacts",
+              "offset": 0,
+              "slot": "23",
+              "type": "t_array(t_string_storage)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:22"
+            },
+            {
+              "label": "_targetedArtifacts",
+              "offset": 0,
+              "slot": "24",
+              "type": "t_array(t_string_storage)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:23"
+            },
+            {
+              "label": "_targetedArtifactSelectors",
+              "offset": 0,
+              "slot": "25",
+              "type": "t_array(t_struct(FuzzSelector)10854_storage)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:25"
+            },
+            {
+              "label": "_targetedSelectors",
+              "offset": 0,
+              "slot": "26",
+              "type": "t_array(t_struct(FuzzSelector)10854_storage)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:26"
+            },
+            {
+              "label": "_targetedInterfaces",
+              "offset": 0,
+              "slot": "27",
+              "type": "t_array(t_struct(FuzzInterface)10860_storage)dyn_storage",
+              "contract": "StdInvariant",
+              "src": "forge-std/StdInvariant.sol:28"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_bytes32)dyn_storage": {
+              "label": "bytes32[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_bytes4)dyn_storage": {
+              "label": "bytes4[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_string_storage)dyn_storage": {
+              "label": "string[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_struct(FuzzInterface)10860_storage)dyn_storage": {
+              "label": "struct StdInvariant.FuzzInterface[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_struct(FuzzSelector)10854_storage)dyn_storage": {
+              "label": "struct StdInvariant.FuzzSelector[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_bytes4": {
+              "label": "bytes4",
+              "numberOfBytes": "4"
+            },
+            "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool)))": {
+              "label": "mapping(address => mapping(bytes4 => mapping(bytes32 => bool)))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256)))": {
+              "label": "mapping(address => mapping(bytes4 => mapping(bytes32 => uint256)))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes32,t_bool)": {
+              "label": "mapping(bytes32 => bool)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes32,t_uint256)": {
+              "label": "mapping(bytes32 => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool))": {
+              "label": "mapping(bytes4 => mapping(bytes32 => bool))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256))": {
+              "label": "mapping(bytes4 => mapping(bytes32 => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_string_memory_ptr,t_string_storage)": {
+              "label": "mapping(string => string)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_string_memory_ptr,t_struct(Chain)7202_storage)": {
+              "label": "mapping(string => struct StdChains.Chain)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_string_storage)": {
+              "label": "mapping(uint256 => string)",
+              "numberOfBytes": "32"
+            },
+            "t_string_memory_ptr": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Chain)7202_storage": {
+              "label": "struct StdChains.Chain",
+              "members": [
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "chainId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "chainAlias",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "rpcUrl",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                }
+              ],
+              "numberOfBytes": "128"
+            },
+            "t_struct(FuzzInterface)10860_storage": {
+              "label": "struct StdInvariant.FuzzInterface",
+              "members": [
+                {
+                  "label": "addr",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "artifacts",
+                  "type": "t_array(t_string_storage)dyn_storage",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_struct(FuzzSelector)10854_storage": {
+              "label": "struct StdInvariant.FuzzSelector",
+              "members": [
+                {
+                  "label": "addr",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "selectors",
+                  "type": "t_array(t_bytes4)dyn_storage",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_struct(StdStorage)11870_storage": {
+              "label": "struct StdStorage",
+              "members": [
+                {
+                  "label": "slots",
+                  "type": "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_uint256)))",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "finds",
+                  "type": "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_bool)))",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "_keys",
+                  "type": "t_array(t_bytes32)dyn_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "_sig",
+                  "type": "t_bytes4",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "_depth",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "_target",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "_set",
+                  "type": "t_bytes32",
+                  "offset": 0,
+                  "slot": "6"
+                }
+              ],
+              "numberOfBytes": "224"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/Vm.sol:Vm": {
+        "src": "forge-std/Vm.sol:587",
+        "inherit": [
+          "forge-std/Vm.sol:VmSafe"
+        ],
+        "libraries": [],
+        "methods": [
+          "chainId(uint256)",
+          "coinbase(address)",
+          "difficulty(uint256)",
+          "fee(uint256)",
+          "prevrandao(bytes32)",
+          "roll(uint256)",
+          "txGasPrice(uint256)",
+          "warp(uint256)",
+          "deal(address,uint256)",
+          "etch(address,bytes)",
+          "loadAllocs(string)",
+          "resetNonce(address)",
+          "setNonce(address,uint64)",
+          "setNonceUnsafe(address,uint64)",
+          "store(address,bytes32,bytes32)",
+          "clearMockedCalls()",
+          "mockCall(address,bytes,bytes)",
+          "mockCall(address,uint256,bytes,bytes)",
+          "mockCallRevert(address,bytes,bytes)",
+          "mockCallRevert(address,uint256,bytes,bytes)",
+          "prank(address)",
+          "startPrank(address)",
+          "prank(address,address)",
+          "startPrank(address,address)",
+          "stopPrank()",
+          "readCallers()",
+          "snapshot()",
+          "revertTo(uint256)",
+          "deleteSnapshot(uint256)",
+          "deleteSnapshots()",
+          "revertToAndDelete(uint256)",
+          "activeFork()",
+          "createFork(string,uint256)",
+          "createFork(string)",
+          "createFork(string,bytes32)",
+          "createSelectFork(string,uint256)",
+          "createSelectFork(string,bytes32)",
+          "createSelectFork(string)",
+          "rollFork(uint256)",
+          "rollFork(bytes32)",
+          "rollFork(uint256,uint256)",
+          "rollFork(uint256,bytes32)",
+          "selectFork(uint256)",
+          "transact(bytes32)",
+          "transact(uint256,bytes32)",
+          "allowCheatcodes(address)",
+          "makePersistent(address)",
+          "makePersistent(address,address)",
+          "makePersistent(address,address,address)",
+          "makePersistent(address[])",
+          "revokePersistent(address)",
+          "revokePersistent(address[])",
+          "isPersistent(address)",
+          "expectCall(address,bytes)",
+          "expectCall(address,bytes,uint64)",
+          "expectCall(address,uint256,bytes)",
+          "expectCall(address,uint256,bytes,uint64)",
+          "expectCall(address,uint256,uint64,bytes)",
+          "expectCall(address,uint256,uint64,bytes,uint64)",
+          "expectCallMinGas(address,uint256,uint64,bytes)",
+          "expectCallMinGas(address,uint256,uint64,bytes,uint64)",
+          "expectEmit(bool,bool,bool,bool)",
+          "expectEmit(bool,bool,bool,bool,address)",
+          "expectEmit()",
+          "expectEmit(address)",
+          "expectRevert(bytes)",
+          "expectRevert(bytes4)",
+          "expectRevert()",
+          "expectSafeMemory(uint64,uint64)",
+          "expectSafeMemoryCall(uint64,uint64)",
+          "skip(bool)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/Vm.sol:VmSafe": {
+        "src": "forge-std/Vm.sol:15",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "addr(uint256)",
+          "getNonce(address)",
+          "load(address,bytes32)",
+          "sign(uint256,bytes32)",
+          "record()",
+          "accesses(address)",
+          "startStateDiffRecording()",
+          "stopAndReturnStateDiff()",
+          "startMappingRecording()",
+          "stopMappingRecording()",
+          "getMappingLength(address,bytes32)",
+          "getMappingSlotAt(address,bytes32,uint256)",
+          "getMappingKeyAndParentOf(address,bytes32)",
+          "recordLogs()",
+          "getRecordedLogs()",
+          "pauseGasMetering()",
+          "resumeGasMetering()",
+          "eth_getLogs(uint256,uint256,address,bytes32[])",
+          "rpc(string,string)",
+          "assume(bool)",
+          "breakpoint(string)",
+          "breakpoint(string,bool)",
+          "rpcUrl(string)",
+          "rpcUrls()",
+          "rpcUrlStructs()",
+          "sleep(uint256)",
+          "exists(string)",
+          "fsMetadata(string)",
+          "isDir(string)",
+          "isFile(string)",
+          "projectRoot()",
+          "unixTime()",
+          "closeFile(string)",
+          "copyFile(string,string)",
+          "createDir(string,bool)",
+          "readDir(string)",
+          "readDir(string,uint64)",
+          "readDir(string,uint64,bool)",
+          "readFile(string)",
+          "readFileBinary(string)",
+          "readLine(string)",
+          "readLink(string)",
+          "removeDir(string,bool)",
+          "removeFile(string)",
+          "writeFile(string,string)",
+          "writeFileBinary(string,bytes)",
+          "writeLine(string,string)",
+          "ffi(string[])",
+          "tryFfi(string[])",
+          "setEnv(string,string)",
+          "envBool(string)",
+          "envUint(string)",
+          "envInt(string)",
+          "envAddress(string)",
+          "envBytes32(string)",
+          "envString(string)",
+          "envBytes(string)",
+          "envBool(string,string)",
+          "envUint(string,string)",
+          "envInt(string,string)",
+          "envAddress(string,string)",
+          "envBytes32(string,string)",
+          "envString(string,string)",
+          "envBytes(string,string)",
+          "envOr(string,bool)",
+          "envOr(string,uint256)",
+          "envOr(string,int256)",
+          "envOr(string,address)",
+          "envOr(string,bytes32)",
+          "envOr(string,string)",
+          "envOr(string,bytes)",
+          "envOr(string,string,bool[])",
+          "envOr(string,string,uint256[])",
+          "envOr(string,string,int256[])",
+          "envOr(string,string,address[])",
+          "envOr(string,string,bytes32[])",
+          "envOr(string,string,string[])",
+          "envOr(string,string,bytes[])",
+          "createWallet(string)",
+          "createWallet(uint256)",
+          "createWallet(uint256,string)",
+          "getLabel(address)",
+          "getNonce((address,uint256,uint256,uint256))",
+          "label(address,string)",
+          "sign((address,uint256,uint256,uint256),bytes32)",
+          "broadcast()",
+          "broadcast(address)",
+          "broadcast(uint256)",
+          "startBroadcast()",
+          "startBroadcast(address)",
+          "startBroadcast(uint256)",
+          "stopBroadcast()",
+          "deriveKey(string,uint32)",
+          "deriveKey(string,string,uint32)",
+          "rememberKey(uint256)",
+          "toString(address)",
+          "toString(bytes)",
+          "toString(bytes32)",
+          "toString(bool)",
+          "toString(uint256)",
+          "toString(int256)",
+          "parseBytes(string)",
+          "parseAddress(string)",
+          "parseUint(string)",
+          "parseInt(string)",
+          "parseBytes32(string)",
+          "parseBool(string)",
+          "getCode(string)",
+          "getDeployedCode(string)",
+          "computeCreateAddress(address,uint256)",
+          "computeCreate2Address(bytes32,bytes32,address)",
+          "computeCreate2Address(bytes32,bytes32)",
+          "keyExists(string,string)",
+          "parseJson(string,string)",
+          "parseJson(string)",
+          "parseJsonUint(string,string)",
+          "parseJsonUintArray(string,string)",
+          "parseJsonInt(string,string)",
+          "parseJsonIntArray(string,string)",
+          "parseJsonBool(string,string)",
+          "parseJsonBoolArray(string,string)",
+          "parseJsonAddress(string,string)",
+          "parseJsonAddressArray(string,string)",
+          "parseJsonString(string,string)",
+          "parseJsonStringArray(string,string)",
+          "parseJsonBytes(string,string)",
+          "parseJsonBytesArray(string,string)",
+          "parseJsonBytes32(string,string)",
+          "parseJsonBytes32Array(string,string)",
+          "parseJsonKeys(string,string)",
+          "serializeJson(string,string)",
+          "serializeBool(string,string,bool)",
+          "serializeUint(string,string,uint256)",
+          "serializeInt(string,string,int256)",
+          "serializeAddress(string,string,address)",
+          "serializeBytes32(string,string,bytes32)",
+          "serializeString(string,string,string)",
+          "serializeBytes(string,string,bytes)",
+          "serializeBool(string,string,bool[])",
+          "serializeUint(string,string,uint256[])",
+          "serializeInt(string,string,int256[])",
+          "serializeAddress(string,string,address[])",
+          "serializeBytes32(string,string,bytes32[])",
+          "serializeString(string,string,string[])",
+          "serializeBytes(string,string,bytes[])",
+          "writeJson(string,string)",
+          "writeJson(string,string,string)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/console.sol:console": {
+        "src": "forge-std/console.sol:4",
+        "version": {
+          "withMetadata": "d40c29c03814e2a09c0b604113de9f4492a4721d4ce6d57e5c4580b56a365abe",
+          "withoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f",
+          "linkedWithoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/console2.sol:console2": {
+        "src": "forge-std/console2.sol:9",
+        "version": {
+          "withMetadata": "d40c29c03814e2a09c0b604113de9f4492a4721d4ce6d57e5c4580b56a365abe",
+          "withoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f",
+          "linkedWithoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/interfaces/IMulticall3.sol:IMulticall3": {
+        "src": "forge-std/interfaces/IMulticall3.sol:6",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "aggregate(struct IMulticall3.Call[])",
+          "aggregate3(struct IMulticall3.Call3[])",
+          "aggregate3Value(struct IMulticall3.Call3Value[])",
+          "blockAndAggregate(struct IMulticall3.Call[])",
+          "getBasefee()",
+          "getBlockHash(uint256)",
+          "getBlockNumber()",
+          "getChainId()",
+          "getCurrentBlockCoinbase()",
+          "getCurrentBlockDifficulty()",
+          "getCurrentBlockGasLimit()",
+          "getCurrentBlockTimestamp()",
+          "getEthBalance(address)",
+          "getLastBlockHash()",
+          "tryAggregate(bool,struct IMulticall3.Call[])",
+          "tryBlockAndAggregate(bool,struct IMulticall3.Call[])"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/mocks/MockERC20.sol:MockERC20": {
+        "src": "forge-std/mocks/MockERC20.sol:6",
+        "version": {
+          "withMetadata": "624fd346e18310498749fc0191bae752c5475093ebd7188e3fc2b83175d96598",
+          "withoutMetadata": "7856221e6e745fa03bf3a67d3dec1a5aa5c697a8f0611a169ceb53a608bc4366",
+          "linkedWithoutMetadata": "7856221e6e745fa03bf3a67d3dec1a5aa5c697a8f0611a169ceb53a608bc4366"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "initialize(string,string,uint8)",
+          "approve(address,uint256)",
+          "transfer(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "permit(address,address,uint256,uint256,uint8,bytes32,bytes32)",
+          "DOMAIN_SEPARATOR()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "name",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_string_storage",
+              "contract": "MockERC20",
+              "src": "forge-std/mocks/MockERC20.sol:19"
+            },
+            {
+              "label": "symbol",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_string_storage",
+              "contract": "MockERC20",
+              "src": "forge-std/mocks/MockERC20.sol:21"
+            },
+            {
+              "label": "decimals",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint8",
+              "contract": "MockERC20",
+              "src": "forge-std/mocks/MockERC20.sol:23"
+            },
+            {
+              "label": "totalSupply",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_uint256",
+              "contract": "MockERC20",
+              "src": "forge-std/mocks/MockERC20.sol:29"
+            },
+            {
+              "label": "balanceOf",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_address,t_uint256)",
+              "contract": "MockERC20",
+              "src": "forge-std/mocks/MockERC20.sol:31"
+            },
+            {
+              "label": "allowance",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "contract": "MockERC20",
+              "src": "forge-std/mocks/MockERC20.sol:33"
+            },
+            {
+              "label": "INITIAL_CHAIN_ID",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_uint256",
+              "contract": "MockERC20",
+              "src": "forge-std/mocks/MockERC20.sol:39"
+            },
+            {
+              "label": "INITIAL_DOMAIN_SEPARATOR",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_bytes32",
+              "contract": "MockERC20",
+              "src": "forge-std/mocks/MockERC20.sol:41"
+            },
+            {
+              "label": "nonces",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_mapping(t_address,t_uint256)",
+              "contract": "MockERC20",
+              "src": "forge-std/mocks/MockERC20.sol:43"
+            },
+            {
+              "label": "initialized",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_bool",
+              "contract": "MockERC20",
+              "src": "forge-std/mocks/MockERC20.sol:50"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/mocks/MockERC721.sol:IERC721TokenReceiver": {
+        "src": "forge-std/mocks/MockERC721.sol:219",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "onERC721Received(address,address,uint256,bytes)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/mocks/MockERC721.sol:MockERC721": {
+        "src": "forge-std/mocks/MockERC721.sol:6",
+        "version": {
+          "withMetadata": "0eaf989e9a313e0bd9763c6f4866418ea9513a6201c7f143d795b6c3d41a4990",
+          "withoutMetadata": "61f35847b39c7bbe5f2a8965342f8356c0b1adfc9abe5c9c8170aaddf329cbaa",
+          "linkedWithoutMetadata": "61f35847b39c7bbe5f2a8965342f8356c0b1adfc9abe5c9c8170aaddf329cbaa"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "tokenURI(uint256)",
+          "ownerOf(uint256)",
+          "balanceOf(address)",
+          "initialize(string,string)",
+          "approve(address,uint256)",
+          "setApprovalForAll(address,bool)",
+          "transferFrom(address,address,uint256)",
+          "safeTransferFrom(address,address,uint256)",
+          "safeTransferFrom(address,address,uint256,bytes)",
+          "supportsInterface(bytes4)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "name",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_string_storage",
+              "contract": "MockERC721",
+              "src": "forge-std/mocks/MockERC721.sol:21"
+            },
+            {
+              "label": "symbol",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_string_storage",
+              "contract": "MockERC721",
+              "src": "forge-std/mocks/MockERC721.sol:23"
+            },
+            {
+              "label": "_ownerOf",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_mapping(t_uint256,t_address)",
+              "contract": "MockERC721",
+              "src": "forge-std/mocks/MockERC721.sol:31"
+            },
+            {
+              "label": "_balanceOf",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_uint256)",
+              "contract": "MockERC721",
+              "src": "forge-std/mocks/MockERC721.sol:33"
+            },
+            {
+              "label": "getApproved",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_address)",
+              "contract": "MockERC721",
+              "src": "forge-std/mocks/MockERC721.sol:49"
+            },
+            {
+              "label": "isApprovedForAll",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+              "contract": "MockERC721",
+              "src": "forge-std/mocks/MockERC721.sol:51"
+            },
+            {
+              "label": "initialized",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_bool",
+              "contract": "MockERC721",
+              "src": "forge-std/mocks/MockERC721.sol:58"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+              "label": "mapping(address => mapping(address => bool))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_address)": {
+              "label": "mapping(uint256 => address)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "forge-std/safeconsole.sol:safeconsole": {
+        "src": "forge-std/safeconsole.sol:6",
+        "version": {
+          "withMetadata": "d40c29c03814e2a09c0b604113de9f4492a4721d4ce6d57e5c4580b56a365abe",
+          "withoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f",
+          "linkedWithoutMetadata": "50918aecfb797943d937d0779744d7d7415633fa0699c041a24f4a8412fe6a4f"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "src/RealEstateFactory.sol:RealEstateFactory": {
+        "src": "src/RealEstateFactory.sol:8",
+        "version": {
+          "withMetadata": "4e72d79beb5e9c897e4d75cc49d15dbe937674dcf68d12f0cd4f019430ffb68e",
+          "withoutMetadata": "5d31421a5d5349de324153d1f17bcd84327bb1ff01908d781483d7748eb7e63c",
+          "linkedWithoutMetadata": "5d31421a5d5349de324153d1f17bcd84327bb1ff01908d781483d7748eb7e63c"
+        },
+        "inherit": [
+          "@openzeppelin/contracts/access/Ownable.sol:Ownable",
+          "@openzeppelin/contracts/utils/Context.sol:Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "(address)",
+          "isMinter(address)",
+          "addMinter(address)",
+          "removeMinter(address)",
+          "createRealEstate(string,string,string,string)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "RealEstateFactory",
+            "src": "src/RealEstateFactory.sol:35"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_owner",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_address",
+              "contract": "Ownable",
+              "src": "@openzeppelin/contracts/access/Ownable.sol:21"
+            },
+            {
+              "label": "plazaCount",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256",
+              "contract": "RealEstateFactory",
+              "src": "src/RealEstateFactory.sol:11"
+            },
+            {
+              "label": "floorCount",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_mapping(t_string_memory_ptr,t_uint256)",
+              "contract": "RealEstateFactory",
+              "src": "src/RealEstateFactory.sol:12"
+            },
+            {
+              "label": "roomCount",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_string_memory_ptr,t_uint256)",
+              "contract": "RealEstateFactory",
+              "src": "src/RealEstateFactory.sol:13"
+            },
+            {
+              "label": "minters",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_address,t_bool)",
+              "contract": "RealEstateFactory",
+              "src": "src/RealEstateFactory.sol:15"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_string_memory_ptr,t_uint256)": {
+              "label": "mapping(string => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_string_memory_ptr": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      },
+      "src/RealEstateToken.sol:RealEstateToken": {
+        "src": "src/RealEstateToken.sol:9",
+        "version": {
+          "withMetadata": "8432172e30699fe56b73230e220e2fbba629b2c454aa44d5d5f3076964ccc7ad",
+          "withoutMetadata": "1b4f92a32cdfb34ba28f0a15afa1464501b66fc46a9cdc07579fa4037abbc11c",
+          "linkedWithoutMetadata": "1b4f92a32cdfb34ba28f0a15afa1464501b66fc46a9cdc07579fa4037abbc11c"
+        },
+        "inherit": [
+          "@openzeppelin/contracts/access/Ownable.sol:Ownable",
+          "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol:ERC1155URIStorage",
+          "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:ERC1155",
+          "@openzeppelin/contracts/interfaces/draft-IERC6093.sol:IERC1155Errors",
+          "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol:IERC1155MetadataURI",
+          "@openzeppelin/contracts/token/ERC1155/IERC1155.sol:IERC1155",
+          "@openzeppelin/contracts/utils/introspection/ERC165.sol:ERC165",
+          "@openzeppelin/contracts/utils/introspection/IERC165.sol:IERC165",
+          "@openzeppelin/contracts/utils/Context.sol:Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "(address,string)",
+          "isMinter(address)",
+          "getSupply(uint256)",
+          "exists(uint256)",
+          "addMinter(address)",
+          "removeMinter(address)",
+          "setContractURI(string)",
+          "setURI(uint256,string)",
+          "mint(address,uint256,uint256,string,bytes)",
+          "supportsInterface(bytes4)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "RealEstateToken",
+            "src": "src/RealEstateToken.sol:38"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_balances",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_mapping(t_uint256,t_mapping(t_address,t_uint256))",
+              "contract": "ERC1155",
+              "src": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:23"
+            },
+            {
+              "label": "_operatorApprovals",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+              "contract": "ERC1155",
+              "src": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:25"
+            },
+            {
+              "label": "_uri",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_string_storage",
+              "contract": "ERC1155",
+              "src": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol:28"
+            },
+            {
+              "label": "_baseURI",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_string_storage",
+              "contract": "ERC1155URIStorage",
+              "src": "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol:17"
+            },
+            {
+              "label": "_tokenURIs",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_string_storage)",
+              "contract": "ERC1155URIStorage",
+              "src": "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol:20"
+            },
+            {
+              "label": "_owner",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_address",
+              "contract": "Ownable",
+              "src": "@openzeppelin/contracts/access/Ownable.sol:21"
+            },
+            {
+              "label": "contractURI",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_string_storage",
+              "contract": "RealEstateToken",
+              "src": "src/RealEstateToken.sol:12"
+            },
+            {
+              "label": "minters",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_mapping(t_address,t_bool)",
+              "contract": "RealEstateToken",
+              "src": "src/RealEstateToken.sol:14"
+            },
+            {
+              "label": "supply",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_mapping(t_uint256,t_uint256)",
+              "contract": "RealEstateToken",
+              "src": "src/RealEstateToken.sol:15"
+            },
+            {
+              "label": "owners",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_mapping(t_uint256,t_array(t_address)dyn_storage)",
+              "contract": "RealEstateToken",
+              "src": "src/RealEstateToken.sol:16"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+              "label": "mapping(address => mapping(address => bool))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_array(t_address)dyn_storage)": {
+              "label": "mapping(uint256 => address[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(uint256 => mapping(address => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_string_storage)": {
+              "label": "mapping(uint256 => string)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_uint256)": {
+              "label": "mapping(uint256 => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.22"
+      }
+    }
+  ]
+}

@@ -12,6 +12,7 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
     string public contractURI;
 
     mapping(address => bool) minters;
+    mapping(uint256 => uint256) supply; // Track supply per token ID
 
     // =================== MODIFIERS =================== //
 
@@ -44,6 +45,14 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
 
     function isMinter(address account) external view returns (bool) {
         return minters[account];
+    }
+
+    function getSupply(uint256 tokenId) external view returns (uint256) {
+        return supply[tokenId];
+    }
+
+    function exists(uint256 tokenId) public view returns (bool) {
+        return supply[tokenId] > 0;
     }
 
     function addMinter(address minter) external onlyOwner {
@@ -80,12 +89,30 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
         string memory _uri,
         bytes memory data
     ) external onlyMinter(msg.sender) {
+        // _validateId(id);
         _mint(account, id, amount, data);
+        supply[id] += amount;
 
         if (bytes(_uri).length > 0) _setURI(id, _uri);
         else _uri = uri(id);
 
         emit AssetCreated(id, account, _uri);
+    }
+
+    function _validateId(uint256 id) internal view {
+        require(!exists(id), "Token already exists");
+        if (id >= 1_000_000_000) {
+            // Room ID (e.g., 10001001001)
+            uint256 plazaId = id / 1_000_000; // Extract plaza ID
+            uint256 floorId = id / 1000; // Extract floor ID
+            require(exists(floorId), "Floor must exist");
+            require(exists(plazaId), "Plaza must exist");
+        } else if (id >= 1_000_000) {
+            // Floor ID (e.g., 10001001)
+            uint256 plazaId = (id / 1000); // Extract plaza ID
+            require(exists(plazaId), "Plaza must exist");
+        }
+        // Plaza (e.g., 10001) does not need a check because it should not exist before.
     }
 
     // function mintBatch(

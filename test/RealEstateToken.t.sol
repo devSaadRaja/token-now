@@ -16,7 +16,7 @@ contract RealEstateTokenTest is Test {
 
     function setUp() public {
         vm.startPrank(owner); // OWNER
-        token = new RealEstateToken();
+        token = new RealEstateToken(owner, "");
         vm.stopPrank(); // OWNER
     }
 
@@ -25,7 +25,7 @@ contract RealEstateTokenTest is Test {
 
         uint256 tokenId = 1;
         uint256 amount = 10;
-        token.mint(user1, tokenId, amount, data);
+        token.mint(user1, tokenId, amount, "", data);
 
         assertEq(token.balanceOf(user1, tokenId), amount);
 
@@ -41,10 +41,13 @@ contract RealEstateTokenTest is Test {
     function testSetBaseURI() public {
         vm.startPrank(owner);
 
-        string memory newURI = "https://realestate.example/";
-        token.setBaseURI(newURI);
-        token.setURI(1, "1.json");
+        token.mint(owner, 1, 10, "https://realestate.example/", data);
+        assertEq(token.uri(1), "https://realestate.example/");
 
+        // string memory newURI = "https://realestate.example/";
+        // token.setBaseURI(newURI);
+
+        token.setURI(1, "https://realestate.example/1.json");
         assertEq(token.uri(1), "https://realestate.example/1.json");
 
         vm.stopPrank();
@@ -62,7 +65,7 @@ contract RealEstateTokenTest is Test {
         vm.stopPrank();
 
         vm.startPrank(user1);
-        token.mint(user2, 2, 5, data);
+        token.mint(user2, 2, 5, "", data);
         vm.stopPrank();
 
         assertEq(token.balanceOf(user2, 2), 5);

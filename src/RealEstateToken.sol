@@ -52,6 +52,12 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
         return supply[tokenId];
     }
 
+    function getOwners(
+        uint256 tokenId
+    ) external view returns (address[] memory) {
+        return owners[tokenId];
+    }
+
     function exists(uint256 tokenId) public view returns (bool) {
         // return supply[tokenId] > 0;
         return bytes(uri(tokenId)).length > 0;
@@ -95,7 +101,7 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
         _mint(account, id, amount, data);
         supply[id] += amount;
         // owners[id].push(account);
-        // _updatePreviousOwnerships(id);
+        // _updatePreviousOwnerships(msg.sender, id);
 
         if (bytes(_uri).length > 0) _setURI(id, _uri);
         else _uri = uri(id);
@@ -103,29 +109,21 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
         emit AssetCreated(id, account, _uri);
     }
 
-    function _updatePreviousOwnerships(uint256 id) internal {
-        // require(bytes(uri(id)).length > 0, "");
-
+    function _updatePreviousOwnerships(address minter, uint256 id) internal {
         if (id >= 1_000_000_000) {
             // Room ID (e.g., 10001001001)
-            uint256 plazaId = id / 1_000_000; // Extract plaza ID
             uint256 floorId = id / 1000; // Extract floor ID
-            require(exists(floorId), "Floor must exist");
-            require(exists(plazaId), "Plaza must exist");
-
-            _removeSupply(floorId);
-            _removeSupply(plazaId);
+            _removeSupply(minter, floorId);
         } else if (id >= 1_000_000) {
             // Floor ID (e.g., 10001001)
             uint256 plazaId = (id / 1000); // Extract plaza ID
-            require(exists(plazaId), "Plaza must exist");
-
-            _removeSupply(plazaId);
+            _removeSupply(minter, plazaId);
         }
-        // Plaza (e.g., 10001) does not need a check because it should not exist before.
     }
 
-    function _removeSupply(uint256 id) internal {
+    function _removeSupply(address minter, uint256 id) internal {
+        require(balanceOf(minter, id) > 0);
+
         supply[id] = 0;
         for (uint i = 0; i < owners[id].length; i++) {
             address owner = owners[id][i];

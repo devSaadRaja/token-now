@@ -20,17 +20,32 @@ contract RealEstateTokenTest is Test {
         vm.stopPrank(); // OWNER
     }
 
-    function testMintByAdmin() public {
+    function testMint() public {
         vm.startPrank(owner);
 
-        // uint256 tokenId = 1;
-        // uint256 amount = 10;
-        // token.mint(user1, tokenId, amount, "", data);
-        token.mint(user1, 10001, 1, "abc", "");
-        token.mint(user1, 10001001, 1, "abc", "");
-        token.mint(user1, 10001001001, 1, "abc", "");
+        token.mint(user1, 10001, 1, "abc", data);
+        assertEq(token.balanceOf(user1, 10001), 1);
+        assertEq(token.getOwners(10001).length, 1);
+        assertEq(token.uri(10001), "abc");
 
-        // assertEq(token.balanceOf(user1, 1), 10);
+        token.mint(user1, 10001001, 1, "abc", data);
+        assertEq(token.balanceOf(user1, 10001), 0);
+        assertEq(token.balanceOf(user1, 10001001), 1);
+        assertEq(token.getOwners(10001).length, 0);
+        assertEq(token.getOwners(10001001).length, 1);
+        assertEq(token.uri(10001), "abc");
+        assertEq(token.uri(10001001), "abc");
+        
+        token.mint(user1, 10001001001, 1, "abc", data);
+        assertEq(token.balanceOf(user1, 10001), 0);
+        assertEq(token.balanceOf(user1, 10001001), 0);
+        assertEq(token.balanceOf(user1, 10001001001), 1);
+        assertEq(token.getOwners(10001).length, 0);
+        assertEq(token.getOwners(10001001).length, 0);
+        assertEq(token.getOwners(10001001001).length, 1);
+        assertEq(token.uri(10001), "abc");
+        assertEq(token.uri(10001001), "abc");
+        assertEq(token.uri(10001001001), "abc");
 
         vm.stopPrank();
     }

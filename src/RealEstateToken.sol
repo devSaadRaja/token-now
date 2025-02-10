@@ -36,10 +36,13 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
     // =================== CONSTRUCTOR =================== //
 
     constructor(
-        address owner,
-        string memory tokenUri
-    ) ERC1155(tokenUri) Ownable(owner) {
-        minters[owner] = true;
+        address _owner,
+        string memory _contractUri,
+        string memory _baseUri
+    ) ERC1155("") Ownable(_owner) {
+        contractURI = _contractUri;
+        _setBaseURI(_baseUri);
+        minters[_owner] = true;
     }
 
     // =================== FUNCTIONS =================== //
@@ -78,9 +81,9 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
         emit ContractURIUpdated(contractURI);
     }
 
-    // function setBaseURI(string memory newuri) external onlyOwner {
-    //     _setBaseURI(newuri);
-    // }
+    function setBaseURI(string memory newuri) external onlyOwner {
+        _setBaseURI(newuri);
+    }
 
     function setURI(
         uint256 tokenId,

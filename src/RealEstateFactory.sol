@@ -55,7 +55,7 @@ contract RealEstateFactory is Ownable {
         string memory uri
     ) external {
         string memory id = _generateID(tokenType, plazaId, floorId);
-        RealEstateToken newContract = new RealEstateToken(msg.sender, uri);
+        RealEstateToken newContract = new RealEstateToken(msg.sender, "", uri);
 
         emit RealEstateCreated(address(newContract), id, msg.sender, uri);
     }

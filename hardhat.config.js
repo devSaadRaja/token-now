@@ -36,6 +36,11 @@ module.exports = {
       chainId: 1,
       accounts: [process.env.PRIVATE_KEY],
     },
+    baseSepolia: {
+      url: process.env.BASE_SEPOLIA_RPC,
+      chainId: 84532,
+      accounts: [process.env.PRIVATE_KEY],
+    },
     // mainnet: {
     //   url: `https://eth-mainnet.g.alchemy.com/v2/${process.env.MAINNET_ALCHEMY_API_KEY}`,
     //   chainId: 1,
@@ -56,6 +61,7 @@ module.exports = {
     apiKey: {
       sepolia: process.env.ETHERSCAN_API_KEY,
       tenderly: process.env.ETHERSCAN_API_KEY,
+      baseSepolia: process.env.BASESCAN_API_KEY,
       // mainnet: process.env.ETHERSCAN_API_KEY,
       // mainnet: process.env.MAINNET_ETHERSCAN_API_KEY,
     },

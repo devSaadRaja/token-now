@@ -96,7 +96,9 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
         uint256 amount,
         string memory _uri,
         bytes memory data
-    ) external onlyMinter(msg.sender) {
+    ) external {
+        // onlyMinter(msg.sender)
+
         // _validateId(id);
         _mint(account, id, amount, data);
         supply[id] += amount;

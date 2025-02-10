@@ -17,28 +17,30 @@ var contractsPath = {
 
 var outputFilePaths = {
   mainnet: "./tenderly_deployments.json",
+  baseSeoplia: "./basesepolia_deployments.json",
 };
 
 var chainData = {
   mainnet: { rpcUrl: process.env.TENDERLY_MAINNET_URL, chainId: 1 },
+  baseSeoplia: { rpcUrl: process.env.BASE_SEPOLIA_RPC, chainId: 84532 },
 };
 
-let outputFilePath = outputFilePaths.mainnet;
+let outputFilePath = outputFilePaths.baseSeoplia;
 let deployments = JSON.parse(readFileSync(outputFilePath, "utf-8"));
 let provider = new ethers.providers.JsonRpcProvider(
-  chainData.mainnet.rpcUrl,
-  chainData.mainnet.chainId
+  chainData.baseSeoplia.rpcUrl,
+  chainData.baseSeoplia.chainId
 );
 
 var signers = [new ethers.Wallet(process.env.PRIVATE_KEY, provider)];
 
 async function deploy() {
-  // const params = [signers[0].address, ""];
+  // const params = [signers[0].address, "https://gateway.pinata.cloud/ipfs/"];
   // const RealEstateToken = await contractDeploy("RealEstateToken", params);
   // deployments["RealEstateToken"] = RealEstateToken.address;
-  // await verifyTenderly("RealEstateToken", deployments["RealEstateToken"]);
-  // // await RealEstateToken.deployTransaction.wait(5);
-  // // await verify(deployments["RealEstateToken"], params);
+  // // await verifyTenderly("RealEstateToken", deployments["RealEstateToken"]);
+  // await RealEstateToken.deployTransaction.wait(5);
+  // await verify(deployments["RealEstateToken"], params);
   // writeFileSync(outputFilePath, JSON.stringify(deployments, null, 2));
 
   // ==============================================================
@@ -51,9 +53,9 @@ async function deploy() {
   // await realEstateToken.addMinter(signers[0].address);
   // await realEstateToken.mint(
   //   signers[0].address,
-  //   111,
+  //   1432,
   //   1,
-  //   "https://stickerbook.nyc3.digitaloceanspaces.com/1736767552388-stkr-book.png",
+  //   "QmdAcTQR8R5f23Rx4WeKg9WiK935QnsBYxPJawnJ3W7Hyd",
   //   ethers.utils.formatBytes32String("")
   // );
 }

@@ -41,19 +41,19 @@ async function deploy() {
   // // await verifyTenderly("RealEstateToken", deployments["RealEstateToken"]);
   // await RealEstateToken.deployTransaction.wait(5);
   // await verify(deployments["RealEstateToken"], params);
-  // // writeFileSync(outputFilePath, JSON.stringify(deployments, null, 2));
+  // writeFileSync(outputFilePath, JSON.stringify(deployments, null, 2));
 
   // ==============================================================
 
   let realEstateToken = await ethers.getContractAt(
     contractsPath.RealEstateToken,
-    "0xEb89336a91Ef40256E8Cc22b3eeF43b4fa3E0df7", // deployments["RealEstateToken"],
+    deployments["RealEstateToken"],
     signers[0]
   );
   // await realEstateToken.addMinter(signers[0].address);
   // await realEstateToken.mint(
   //   signers[0].address,
-  //   143222,
+  //   10001,
   //   1,
   //   "QmdAcTQR8R5f23Rx4WeKg9WiK935QnsBYxPJawnJ3W7Hyd",
   //   ethers.utils.formatBytes32String("")

@@ -109,9 +109,9 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
         // _updatePreviousOwnerships(msg.sender, id);
 
         if (bytes(_uri).length > 0) _setURI(id, _uri);
-        else _uri = uri(id);
+        // else _uri = uri(id);
 
-        emit AssetCreated(id, account, _uri);
+        emit AssetCreated(id, account, uri(id));
     }
 
     function _updatePreviousOwnerships(address minter, uint256 id) internal {

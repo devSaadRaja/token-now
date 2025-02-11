@@ -36,6 +36,14 @@ contract RealEstateTokenTest is Test {
             data
         );
         console.log(token.uri(10001), "<<< AFTER");
+        token.mint(
+            owner,
+            10001,
+            1,
+            "",
+            data
+        );
+        console.log(token.uri(10001), "<<<");
 
         // token.mint(user1, 10001, 1, "abc", data);
         // assertEq(token.balanceOf(user1, 10001), 1);

@@ -12,6 +12,7 @@ const {
 config({ path: resolve(__dirname, "./.env") });
 
 var contractsPath = {
+  Marketplace: "src/Marketplace.sol:Marketplace",
   RealEstateToken: "src/RealEstateToken.sol:RealEstateToken",
 };
 
@@ -43,6 +44,14 @@ async function deploy() {
   // await verify(deployments["RealEstateToken"], params);
   // writeFileSync(outputFilePath, JSON.stringify(deployments, null, 2));
 
+  // const params = [];
+  // const Marketplace = await contractDeploy("Marketplace", params);
+  // deployments["Marketplace"] = Marketplace.address;
+  // // await verifyTenderly("Marketplace", deployments["Marketplace"]);
+  // await Marketplace.deployTransaction.wait(5);
+  // await verify(deployments["Marketplace"], params);
+  // writeFileSync(outputFilePath, JSON.stringify(deployments, null, 2));
+
   // ==============================================================
 
   let realEstateToken = await ethers.getContractAt(
@@ -53,10 +62,17 @@ async function deploy() {
   // await realEstateToken.addMinter(signers[0].address);
   // await realEstateToken.mint(
   //   signers[0].address,
-  //   10001,
+  //   "p",
+  //   0,
   //   1,
   //   "QmdAcTQR8R5f23Rx4WeKg9WiK935QnsBYxPJawnJ3W7Hyd",
   //   ethers.utils.formatBytes32String("")
+  // );
+
+  // let marketplace = await ethers.getContractAt(
+  //   contractsPath.Marketplace,
+  //   deployments["Marketplace"],
+  //   signers[0]
   // );
 }
 

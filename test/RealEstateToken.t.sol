@@ -2,6 +2,7 @@
 pragma solidity ^0.8.22;
 
 import "forge-std/Test.sol";
+import {IdGenerator} from "../src/IdGenerator.sol";
 import {RealEstateToken} from "../src/RealEstateToken.sol";
 import {IERC1155} from "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 
@@ -11,6 +12,7 @@ contract RealEstateTokenTest is Test {
     address public user2 = vm.addr(3);
 
     RealEstateToken public token;
+    IdGenerator public idGenerator;
 
     bytes data = "";
 
@@ -21,28 +23,41 @@ contract RealEstateTokenTest is Test {
             "",
             "https://gateway.pinata.cloud/ipfs/"
         );
+        idGenerator = new IdGenerator();
         vm.stopPrank(); // OWNER
     }
 
     function testMint() public {
         vm.startPrank(owner);
 
+        // uint256 id = idGenerator.generateID("p", 0);
+        // console.log(id, "<<< id");
+        // id = idGenerator.generateID("p", 0);
+        // console.log(id, "<<< id");
+        // id = idGenerator.generateID("p", 0);
+        // console.log(id, "<<< id");
+        // id = idGenerator.generateID("p", 0);
+        // console.log(id, "<<< id");
+        // id = idGenerator.generateID("p", 0);
+        // console.log(id, "<<< id");
+        // id = idGenerator.generateID("p", 0);
+        // console.log(id, "<<< id");
+        // id = idGenerator.generateID("f", 10006);
+        // console.log(id, "<<< id");
+        // id = idGenerator.generateID("r", 10006001);
+        // console.log(id, "<<< id");
+
         console.log(token.uri(10001), "<<< BEFORE");
         token.mint(
             owner,
-            10001,
+            "p",
+            0,
             1,
             "QmdAcTQR8R5f23Rx4WeKg9WiK935QnsBYxPJawnJ3W7Hyd",
             data
         );
         console.log(token.uri(10001), "<<< AFTER");
-        token.mint(
-            owner,
-            10001,
-            1,
-            "",
-            data
-        );
+        token.mint(owner, "p", 0, 1, "", data);
         console.log(token.uri(10001), "<<<");
 
         // token.mint(user1, 10001, 1, "abc", data);

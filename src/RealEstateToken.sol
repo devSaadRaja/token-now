@@ -6,7 +6,9 @@ import "forge-std/Test.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol";
 
-contract RealEstateToken is ERC1155URIStorage, Ownable {
+import {IdGenerator} from "./IdGenerator.sol";
+
+contract RealEstateToken is ERC1155URIStorage, Ownable, IdGenerator {
     // =================== STRUCTURE =================== //
 
     string public contractURI;
@@ -61,10 +63,10 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
         return owners[tokenId];
     }
 
-    function exists(uint256 tokenId) public view returns (bool) {
-        // return supply[tokenId] > 0;
-        return bytes(uri(tokenId)).length > 0;
-    }
+    // function exists(uint256 tokenId) public view returns (bool) {
+    //     // return supply[tokenId] > 0;
+    //     return bytes(uri(tokenId)).length > 0;
+    // }
 
     function addMinter(address minter) external onlyOwner {
         minters[minter] = true;
@@ -95,21 +97,25 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
 
     function mint(
         address account,
-        uint256 id,
+        string memory assetType,
+        uint256 parentId,
         uint256 amount,
         string memory _uri,
         bytes memory data
     ) external {
         // onlyMinter(msg.sender)
 
+        uint256 id = _generateID(assetType, parentId);
+
         // _validateId(id);
+
         _mint(account, id, amount, data);
         supply[id] += amount;
+
         // owners[id].push(account);
         // _updatePreviousOwnerships(msg.sender, id);
 
         if (bytes(_uri).length > 0) _setURI(id, _uri);
-        // else _uri = uri(id);
 
         emit AssetCreated(id, account, uri(id));
     }
@@ -137,21 +143,21 @@ contract RealEstateToken is ERC1155URIStorage, Ownable {
         delete owners[id];
     }
 
-    function _validateId(uint256 id) internal view {
-        require(!exists(id), "Token already exists");
-        if (id >= 1_000_000_000) {
-            // Room ID (e.g., 10001001001)
-            uint256 plazaId = id / 1_000_000; // Extract plaza ID
-            uint256 floorId = id / 1000; // Extract floor ID
-            require(exists(floorId), "Floor must exist");
-            require(exists(plazaId), "Plaza must exist");
-        } else if (id >= 1_000_000) {
-            // Floor ID (e.g., 10001001)
-            uint256 plazaId = (id / 1000); // Extract plaza ID
-            require(exists(plazaId), "Plaza must exist");
-        }
-        // Plaza (e.g., 10001) does not need a check because it should not exist before.
-    }
+    // function _validateId(uint256 id) internal view {
+    //     require(!exists(id), "Token already exists");
+    //     if (id >= 1_000_000_000) {
+    //         // Room ID (e.g., 10001001001)
+    //         uint256 plazaId = id / 1_000_000; // Extract plaza ID
+    //         uint256 floorId = id / 1000; // Extract floor ID
+    //         require(exists(floorId), "Floor must exist");
+    //         require(exists(plazaId), "Plaza must exist");
+    //     } else if (id >= 1_000_000) {
+    //         // Floor ID (e.g., 10001001)
+    //         uint256 plazaId = (id / 1000); // Extract plaza ID
+    //         require(exists(plazaId), "Plaza must exist");
+    //     }
+    //     // Plaza (e.g., 10001) does not need a check because it should not exist before.
+    // }
 
     // function mintBatch(
     //     address to,

@@ -4,8 +4,9 @@ pragma solidity ^0.8.19;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 
-contract Marketplace is ReentrancyGuard {
+contract Marketplace is ReentrancyGuard, ERC1155Holder {
     // =================== STRUCTURE =================== //
 
     struct Order {
@@ -16,6 +17,7 @@ contract Marketplace is ReentrancyGuard {
         uint256 price;
         address paymentToken;
         uint256 expiry;
+        bool escrowed;
     }
 
     mapping(bytes32 => Order) public orders;
@@ -28,7 +30,8 @@ contract Marketplace is ReentrancyGuard {
         bytes32 orderId,
         uint256 tokenId,
         uint256 amount,
-        uint256 price
+        uint256 price,
+        bool escrowed
     );
     event OrderExecuted(
         address indexed buyer,
@@ -47,7 +50,8 @@ contract Marketplace is ReentrancyGuard {
         uint256 amount,
         uint256 price,
         address paymentToken,
-        uint256 expiry
+        uint256 expiry,
+        bool escrowed
     ) external returns (bytes32 orderId) {
         require(expiry > block.timestamp, "Expiry must be in the future");
         require(amount > 0, "Amount must be greater than zero");
@@ -65,6 +69,16 @@ contract Marketplace is ReentrancyGuard {
         );
         require(orders[orderId].seller == address(0), "Order already exists");
 
+        if (escrowed) {
+            IERC1155(token).safeTransferFrom(
+                msg.sender,
+                address(this),
+                tokenId,
+                amount,
+                ""
+            );
+        }
+
         orders[orderId] = Order({
             seller: msg.sender,
             token: token,
@@ -72,10 +86,18 @@ contract Marketplace is ReentrancyGuard {
             amount: amount,
             price: price,
             paymentToken: paymentToken,
-            expiry: expiry
+            expiry: expiry,
+            escrowed: escrowed
         });
 
-        emit OrderCreated(msg.sender, orderId, tokenId, amount, price);
+        emit OrderCreated(
+            msg.sender,
+            orderId,
+            tokenId,
+            amount,
+            price,
+            escrowed
+        );
     }
 
     function executeOrder(bytes32 orderId) external payable nonReentrant {
@@ -97,13 +119,24 @@ contract Marketplace is ReentrancyGuard {
             );
         }
 
-        IERC1155(order.token).safeTransferFrom(
-            order.seller,
-            msg.sender,
-            order.tokenId,
-            order.amount,
-            ""
-        );
+        if (order.escrowed) {
+            IERC1155(order.token).safeTransferFrom(
+                address(this),
+                msg.sender,
+                order.tokenId,
+                order.amount,
+                ""
+            );
+        } else {
+            IERC1155(order.token).safeTransferFrom(
+                order.seller,
+                msg.sender,
+                order.tokenId,
+                order.amount,
+                ""
+            );
+        }
+
         emit OrderExecuted(
             msg.sender,
             orderId,
@@ -117,6 +150,17 @@ contract Marketplace is ReentrancyGuard {
         Order memory order = orders[orderId];
         require(order.seller == msg.sender, "Only seller can cancel");
         require(!executedOrders[orderId], "Order already executed");
+
+        if (order.escrowed) {
+            IERC1155(order.token).safeTransferFrom(
+                address(this),
+                msg.sender,
+                order.tokenId,
+                order.amount,
+                ""
+            );
+        }
+
         delete orders[orderId];
         emit OrderCancelled(orderId);
     }

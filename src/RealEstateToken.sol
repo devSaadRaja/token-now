@@ -30,6 +30,7 @@ contract RealEstateToken is ERC1155URIStorage, Ownable, IdGenerator {
     event MinterRemoved(address indexed minter);
     event ContractURIUpdated(string contractURI);
     event AssetCreated(
+        string assetType,
         uint256 indexed tokenID,
         address indexed owner,
         string uri
@@ -117,7 +118,7 @@ contract RealEstateToken is ERC1155URIStorage, Ownable, IdGenerator {
 
         if (bytes(_uri).length > 0) _setURI(id, _uri);
 
-        emit AssetCreated(id, account, uri(id));
+        emit AssetCreated(assetType, id, account, uri(id));
     }
 
     function _updatePreviousOwnerships(address minter, uint256 id) internal {

@@ -6,6 +6,8 @@ import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 
+import "./interfaces/IRealEstateToken.sol";
+
 contract Marketplace is ReentrancyGuard, ERC1155Holder {
     // =================== STRUCTURE =================== //
 
@@ -53,6 +55,11 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
         uint256 expiry,
         bool escrowed
     ) external returns (bytes32 orderId) {
+        // require(
+        //     !IRealEstateToken(token).ifChildIdExists("p", tokenId) &&
+        //         !IRealEstateToken(token).ifChildIdExists("f", tokenId),
+        //     "Cannot sell token with existing children"
+        // );
         require(expiry > block.timestamp, "Expiry must be in the future");
         require(amount > 0, "Amount must be greater than zero");
 

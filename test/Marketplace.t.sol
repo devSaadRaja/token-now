@@ -39,6 +39,14 @@ contract MarketplaceTest is Test {
             "QmdAcTQR8R5f23Rx4WeKg9WiK935QnsBYxPJawnJ3W7Hyd",
             data
         );
+        // token.mint(
+        //     seller,
+        //     "f",
+        //     10001,
+        //     10,
+        //     "QmdAcTQR8R5f23Rx4WeKg9WiK935QnsBYxPJawnJ3W7Hyd",
+        //     data
+        // );
         vm.stopPrank();
     }
 

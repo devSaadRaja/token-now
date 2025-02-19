@@ -52,4 +52,19 @@ contract IdGenerator {
         roomCounters[plazaID][floorID]++;
         return floorID * 1000 + roomCounters[plazaID][floorID];
     }
+
+    function ifChildIdExists(
+        string memory assetType,
+        uint256 parentId
+    ) external view returns (bool) {
+        bytes1 assetChar = bytes(assetType)[0];
+        if (assetChar == "p" || assetChar == "P") {
+            return floorCounters[parentId] > 0;
+        } else if (assetChar == "f" || assetChar == "F") {
+            uint256 plazaID = parentId / 1000;
+            return roomCounters[plazaID][parentId] > 0;
+        }
+
+        return false;
+    }
 }

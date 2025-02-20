@@ -32,6 +32,7 @@ contract RealEstateToken is ERC1155URIStorage, Ownable, IdGenerator {
     event AssetCreated(
         string assetType,
         uint256 indexed tokenID,
+        uint256 amount,
         address indexed owner,
         string uri
     );
@@ -106,6 +107,10 @@ contract RealEstateToken is ERC1155URIStorage, Ownable, IdGenerator {
     ) external {
         // onlyMinter(msg.sender)
 
+        if (parentId > 0) {
+            require(balanceOf(msg.sender, parentId) > 0, "Not the token owner");
+        }
+
         uint256 id = _generateID(assetType, parentId);
 
         // _validateId(id);
@@ -118,31 +123,31 @@ contract RealEstateToken is ERC1155URIStorage, Ownable, IdGenerator {
 
         if (bytes(_uri).length > 0) _setURI(id, _uri);
 
-        emit AssetCreated(assetType, id, account, uri(id));
+        emit AssetCreated(assetType, id, amount, account, uri(id));
     }
 
-    function _updatePreviousOwnerships(address minter, uint256 id) internal {
-        if (id >= 1_000_000_000) {
-            // Room ID (e.g., 10001001001)
-            uint256 floorId = id / 1000; // Extract floor ID
-            _removeSupply(minter, floorId);
-        } else if (id >= 1_000_000) {
-            // Floor ID (e.g., 10001001)
-            uint256 plazaId = (id / 1000); // Extract plaza ID
-            _removeSupply(minter, plazaId);
-        }
-    }
+    // function _updatePreviousOwnerships(address minter, uint256 id) internal {
+    //     if (id >= 1_000_000_000) {
+    //         // Room ID (e.g., 10001001001)
+    //         uint256 floorId = id / 1000; // Extract floor ID
+    //         _removeSupply(minter, floorId);
+    //     } else if (id >= 1_000_000) {
+    //         // Floor ID (e.g., 10001001)
+    //         uint256 plazaId = (id / 1000); // Extract plaza ID
+    //         _removeSupply(minter, plazaId);
+    //     }
+    // }
 
-    function _removeSupply(address minter, uint256 id) internal {
-        require(balanceOf(minter, id) > 0);
+    // function _removeSupply(address minter, uint256 id) internal {
+    //     require(balanceOf(minter, id) > 0);
 
-        supply[id] = 0;
-        for (uint i = 0; i < owners[id].length; i++) {
-            address owner = owners[id][i];
-            _burn(owner, id, balanceOf(owner, id));
-        }
-        delete owners[id];
-    }
+    //     supply[id] = 0;
+    //     for (uint i = 0; i < owners[id].length; i++) {
+    //         address owner = owners[id][i];
+    //         _burn(owner, id, balanceOf(owner, id));
+    //     }
+    //     delete owners[id];
+    // }
 
     // function _validateId(uint256 id) internal view {
     //     require(!exists(id), "Token already exists");
@@ -173,10 +178,4 @@ contract RealEstateToken is ERC1155URIStorage, Ownable, IdGenerator {
     //         emit AssetCreated(ids[i], to, uri[i]);
     //     }
     // }
-
-    function supportsInterface(
-        bytes4 interfaceId
-    ) public view override returns (bool) {
-        return super.supportsInterface(interfaceId);
-    }
 }

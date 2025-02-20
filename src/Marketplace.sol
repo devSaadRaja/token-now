@@ -55,11 +55,11 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
         uint256 expiry,
         bool escrowed
     ) external returns (bytes32 orderId) {
-        // require(
-        //     !IRealEstateToken(token).ifChildIdExists("p", tokenId) &&
-        //         !IRealEstateToken(token).ifChildIdExists("f", tokenId),
-        //     "Cannot sell token with existing children"
-        // );
+        require(
+            !IRealEstateToken(token).ifChildIdExists("p", tokenId) &&
+                !IRealEstateToken(token).ifChildIdExists("f", tokenId),
+            "Cannot sell token with existing children"
+        );
         require(expiry > block.timestamp, "Expiry must be in the future");
         require(amount > 0, "Amount must be greater than zero");
 
@@ -117,7 +117,10 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
 
         if (order.paymentToken == address(0)) {
             require(msg.value == order.price, "Incorrect ETH sent");
-            payable(order.seller).transfer(order.price);
+            (bool success, ) = payable(order.seller).call{value: order.price}(
+                ""
+            );
+            require(success, "ETH transfer failed");
         } else {
             IERC20(order.paymentToken).transferFrom(
                 msg.sender,

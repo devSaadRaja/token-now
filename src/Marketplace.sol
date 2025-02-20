@@ -13,6 +13,7 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
 
     struct Order {
         address seller;
+        string assetType;
         address token;
         uint256 tokenId;
         uint256 amount;
@@ -25,10 +26,15 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
     mapping(bytes32 => Order) public orders;
     mapping(bytes32 => bool) public executedOrders;
 
+    // seller -> tokenAddress -> tokenId = amount
+    mapping(address => mapping(address => mapping(uint256 => uint256))) escrowedListedAmounts;
+    mapping(address => mapping(address => mapping(uint256 => uint256))) nonEscrowedListedAmounts;
+
     // =================== EVENTS =================== //
 
     event OrderCreated(
         address indexed seller,
+        string assetType,
         bytes32 orderId,
         uint256 tokenId,
         uint256 amount,
@@ -37,6 +43,7 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
     );
     event OrderExecuted(
         address indexed buyer,
+        string assetType,
         bytes32 orderId,
         uint256 tokenId,
         uint256 amount,
@@ -46,7 +53,24 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
 
     // =================== FUNCTIONS =================== //
 
+    function getEscrowedListedAmount(
+        address seller,
+        address token,
+        uint256 tokenId
+    ) external view returns (uint256) {
+        return escrowedListedAmounts[seller][token][tokenId];
+    }
+
+    function getNonEscrowedListedAmount(
+        address seller,
+        address token,
+        uint256 tokenId
+    ) external view returns (uint256) {
+        return nonEscrowedListedAmounts[seller][token][tokenId];
+    }
+
     function createOrder(
+        string memory assetType,
         address token,
         uint256 tokenId,
         uint256 amount,
@@ -66,6 +90,7 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
         orderId = keccak256(
             abi.encode(
                 msg.sender,
+                assetType,
                 token,
                 tokenId,
                 amount,
@@ -76,18 +101,31 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
         );
         require(orders[orderId].seller == address(0), "Order already exists");
 
+        IERC1155 asset = IERC1155(token);
+        uint256 sellerBalance = asset.balanceOf(msg.sender, tokenId);
+        uint256 reserved = nonEscrowedListedAmounts[msg.sender][token][tokenId];
+        require(
+            sellerBalance >= reserved + amount,
+            "Not enough tokens available"
+        );
+
         if (escrowed) {
-            IERC1155(token).safeTransferFrom(
+            asset.safeTransferFrom(
                 msg.sender,
                 address(this),
                 tokenId,
                 amount,
                 ""
             );
+
+            escrowedListedAmounts[msg.sender][token][tokenId] += amount;
+        } else {
+            nonEscrowedListedAmounts[msg.sender][token][tokenId] += amount;
         }
 
         orders[orderId] = Order({
             seller: msg.sender,
+            assetType: assetType,
             token: token,
             tokenId: tokenId,
             amount: amount,
@@ -99,6 +137,7 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
 
         emit OrderCreated(
             msg.sender,
+            assetType,
             orderId,
             tokenId,
             amount,
@@ -137,6 +176,10 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
                 order.amount,
                 ""
             );
+
+            escrowedListedAmounts[order.seller][order.token][
+                order.tokenId
+            ] -= order.amount;
         } else {
             IERC1155(order.token).safeTransferFrom(
                 order.seller,
@@ -145,10 +188,15 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
                 order.amount,
                 ""
             );
+
+            nonEscrowedListedAmounts[order.seller][order.token][
+                order.tokenId
+            ] -= order.amount;
         }
 
         emit OrderExecuted(
             msg.sender,
+            order.assetType,
             orderId,
             order.tokenId,
             order.amount,
@@ -169,9 +217,42 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
                 order.amount,
                 ""
             );
+
+            escrowedListedAmounts[order.seller][order.token][
+                order.tokenId
+            ] -= order.amount;
+        } else {
+            nonEscrowedListedAmounts[order.seller][order.token][
+                order.tokenId
+            ] -= order.amount;
         }
 
         delete orders[orderId];
         emit OrderCancelled(orderId);
     }
+
+    // function _checkDuplicateOrder(
+    //     address seller,
+    //     address token,
+    //     uint256 tokenId,
+    //     uint256 amount,
+    //     uint256 price,
+    //     address paymentToken,
+    //     uint256 expiry
+    // ) internal view returns (bool) {
+    //     bytes32 orderId = keccak256(
+    //         abi.encode(
+    //             seller,
+    //             token,
+    //             tokenId,
+    //             amount,
+    //             price,
+    //             paymentToken,
+    //             expiry
+    //         )
+    //     );
+    //     return orders[orderId].seller != address(0);
+    // }
+
+    // function _checkDuplicateOrder() internal view returns (bool) {}
 }

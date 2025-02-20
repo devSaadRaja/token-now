@@ -54,6 +54,7 @@ contract MarketplaceTest is Test {
         vm.startPrank(seller);
         token.setApprovalForAll(address(marketplace), true);
         bytes32 orderId = marketplace.createOrder(
+            "p",
             address(token),
             10001,
             5,
@@ -66,6 +67,7 @@ contract MarketplaceTest is Test {
 
         (
             address orderSeller,
+            ,
             ,
             uint256 tokenId,
             uint256 amount,
@@ -86,6 +88,7 @@ contract MarketplaceTest is Test {
         vm.startPrank(seller);
         token.setApprovalForAll(address(marketplace), true);
         bytes32 orderId = marketplace.createOrder(
+            "p",
             address(token),
             10001,
             1,
@@ -110,6 +113,7 @@ contract MarketplaceTest is Test {
 
         token.setApprovalForAll(address(marketplace), true);
         bytes32 orderId = marketplace.createOrder(
+            "p",
             address(token),
             10001,
             1,
@@ -123,15 +127,63 @@ contract MarketplaceTest is Test {
 
         vm.stopPrank();
 
-        (address orderSeller, , , , , , , ) = marketplace.orders(orderId);
+        (address orderSeller, , , , , , , , ) = marketplace.orders(orderId);
 
         assertEq(orderSeller, address(0)); // Order should be deleted
+    }
+
+    function testMultipleOrdersListingNonEscrowed() public {
+        uint256 tokenId = 10001;
+        uint256 price = 1 ether;
+        uint256 expiry = block.timestamp + 1 days;
+
+        // Seller lists 5 tokens in the first order
+        vm.prank(seller);
+        marketplace.createOrder(
+            "p",
+            address(token),
+            tokenId,
+            5,
+            price,
+            address(0),
+            expiry,
+            false
+        );
+
+        // Seller lists an additional 2 tokens in a second order
+        vm.prank(seller);
+        marketplace.createOrder(
+            "p",
+            address(token),
+            tokenId,
+            2,
+            price,
+            address(0),
+            expiry,
+            false
+        );
+
+        // Total listed so far: 7 tokens.
+        // Attempting to list another 4 tokens should fail since 7 + 4 > 10.
+        vm.prank(seller);
+        vm.expectRevert("Not enough tokens available");
+        marketplace.createOrder(
+            "p",
+            address(token),
+            tokenId,
+            4,
+            price,
+            address(0),
+            expiry,
+            false
+        );
     }
 
     function testCreateOrderEscrowed() public {
         vm.startPrank(seller);
         token.setApprovalForAll(address(marketplace), true);
         bytes32 orderId = marketplace.createOrder(
+            "p",
             address(token),
             10001,
             5,
@@ -144,6 +196,7 @@ contract MarketplaceTest is Test {
 
         (
             address orderSeller,
+            ,
             ,
             uint256 tokenId,
             uint256 amount,
@@ -167,6 +220,7 @@ contract MarketplaceTest is Test {
         vm.startPrank(seller);
         token.setApprovalForAll(address(marketplace), true);
         bytes32 orderId = marketplace.createOrder(
+            "p",
             address(token),
             10001,
             1,
@@ -192,6 +246,7 @@ contract MarketplaceTest is Test {
 
         token.setApprovalForAll(address(marketplace), true);
         bytes32 orderId = marketplace.createOrder(
+            "p",
             address(token),
             10001,
             1,
@@ -211,8 +266,122 @@ contract MarketplaceTest is Test {
 
         vm.stopPrank();
 
-        (address orderSeller, , , , , , , ) = marketplace.orders(orderId);
+        (address orderSeller, , , , , , , , ) = marketplace.orders(orderId);
 
         assertEq(orderSeller, address(0)); // Order should be deleted
+    }
+
+    function testMultipleOrdersListingEscrowed() public {
+        uint256 tokenId = 10001;
+        uint256 price = 1 ether;
+        uint256 expiry = block.timestamp + 1 days;
+
+        vm.startPrank(seller);
+
+        token.setApprovalForAll(address(marketplace), true);
+
+        // Seller lists 5 tokens in the first order
+        marketplace.createOrder(
+            "p",
+            address(token),
+            tokenId,
+            5,
+            price,
+            address(0),
+            expiry,
+            true
+        );
+
+        // Seller lists an additional 2 tokens in a second order
+        marketplace.createOrder(
+            "p",
+            address(token),
+            tokenId,
+            2,
+            price,
+            address(0),
+            expiry,
+            true
+        );
+
+        // Total listed so far: 7 tokens.
+        // Attempting to list another 4 tokens should fail since 7 + 4 > 10.
+        vm.expectRevert("Not enough tokens available");
+        marketplace.createOrder(
+            "p",
+            address(token),
+            tokenId,
+            4,
+            price,
+            address(0),
+            expiry,
+            true
+        );
+
+        vm.stopPrank();
+    }
+
+    function testMultipleOrdersListing() public {
+        uint256 tokenId = 10001;
+        uint256 price = 1 ether;
+        uint256 expiry = block.timestamp + 1 days;
+
+        vm.startPrank(seller);
+
+        token.setApprovalForAll(address(marketplace), true);
+
+        // Seller lists 5 tokens in the first order
+        marketplace.createOrder(
+            "p",
+            address(token),
+            tokenId,
+            5,
+            price,
+            address(0),
+            expiry,
+            true
+        );
+
+        // Seller lists an additional 2 tokens in a second order
+        marketplace.createOrder(
+            "p",
+            address(token),
+            tokenId,
+            2,
+            price,
+            address(0),
+            expiry,
+            false
+        );
+
+        // Total listed so far: 7 tokens.
+        // Attempting to list another 4 tokens should fail since 7 + 4 > 10.
+        vm.expectRevert("Not enough tokens available");
+        marketplace.createOrder(
+            "p",
+            address(token),
+            tokenId,
+            4,
+            price,
+            address(0),
+            expiry,
+            true
+        );
+
+        // Total listed so far: 7 tokens.
+        // Attempting to list another 4 tokens should fail since 7 + 4 > 10.
+        vm.expectRevert("Not enough tokens available");
+        marketplace.createOrder(
+            "p",
+            address(token),
+            tokenId,
+            4,
+            price,
+            address(0),
+            expiry,
+            false
+        );
+
+        vm.stopPrank();
     }
 }

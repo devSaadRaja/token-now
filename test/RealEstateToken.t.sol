@@ -87,6 +87,51 @@ contract RealEstateTokenTest is Test {
         vm.stopPrank();
     }
 
+    // function testMintBatch() public {
+    //     vm.startPrank(owner);
+
+    //     string[] memory assetTypes = new string[](3);
+    //     uint256[] memory parentIds = new uint256[](3);
+    //     uint256[] memory amounts = new uint256[](3);
+    //     string[] memory uris = new string[](3);
+    //     bytes[] memory datas = new bytes[](3);
+
+    //     assetTypes[0] = "p"; // plaza
+    //     assetTypes[1] = "f"; // floor
+    //     assetTypes[2] = "r"; // room
+
+    //     parentIds[0] = 0; // plaza has no parent
+    //     parentIds[1] = 10001; // floor's parent is plaza
+    //     parentIds[2] = 10001001; // room's parent is floor
+
+    //     amounts[0] = 1;
+    //     amounts[1] = 1;
+    //     amounts[2] = 1;
+
+    //     uris[0] = "uri1";
+    //     uris[1] = "uri2";
+    //     uris[2] = "uri3";
+
+    //     datas[0] = data;
+    //     datas[1] = data;
+    //     datas[2] = data;
+
+    //     token.mintBatch(owner, assetTypes, parentIds, amounts, uris, datas);
+
+    //     assertEq(token.balanceOf(owner, 10001), 1); // Plaza token
+    //     assertEq(token.balanceOf(owner, 10001001), 1); // Floor token
+    //     assertEq(token.balanceOf(owner, 10001001001), 1); // Room token
+
+    //     assertEq(token.uri(10001), "https://gateway.pinata.cloud/ipfs/uri1");
+    //     assertEq(token.uri(10001001), "https://gateway.pinata.cloud/ipfs/uri2");
+    //     assertEq(
+    //         token.uri(10001001001),
+    //         "https://gateway.pinata.cloud/ipfs/uri3"
+    //     );
+
+    //     vm.stopPrank();
+    // }
+
     // function testFailMintByNonMinter() public {
     //     vm.startPrank(user1);
     //     token.mint(user1, 1, 10, data);

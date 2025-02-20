@@ -230,29 +230,4 @@ contract Marketplace is ReentrancyGuard, ERC1155Holder {
         delete orders[orderId];
         emit OrderCancelled(orderId);
     }
-
-    // function _checkDuplicateOrder(
-    //     address seller,
-    //     address token,
-    //     uint256 tokenId,
-    //     uint256 amount,
-    //     uint256 price,
-    //     address paymentToken,
-    //     uint256 expiry
-    // ) internal view returns (bool) {
-    //     bytes32 orderId = keccak256(
-    //         abi.encode(
-    //             seller,
-    //             token,
-    //             tokenId,
-    //             amount,
-    //             price,
-    //             paymentToken,
-    //             expiry
-    //         )
-    //     );
-    //     return orders[orderId].seller != address(0);
-    // }
-
-    // function _checkDuplicateOrder() internal view returns (bool) {}
 }

@@ -178,4 +178,39 @@ contract RealEstateToken is ERC1155URIStorage, Ownable, IdGenerator {
     //         emit AssetCreated(ids[i], to, uri[i]);
     //     }
     // }
+
+    // function mintBatch(
+    //     address account,
+    //     string[] memory assetTypes,
+    //     uint256[] memory parentIds,
+    //     uint256[] memory amounts,
+    //     string[] memory uris,
+    //     bytes[] memory datas
+    // ) external {
+    //     require(
+    //         assetTypes.length == parentIds.length &&
+    //             parentIds.length == amounts.length &&
+    //             amounts.length == uris.length &&
+    //             uris.length == datas.length,
+    //         "Arrays length mismatch"
+    //     );
+
+    //     for (uint256 i = 0; i < assetTypes.length; i++) {
+    //         if (parentIds[i] > 0) {
+    //             require(
+    //                 balanceOf(msg.sender, parentIds[i]) > 0,
+    //                 "Not the token owner"
+    //             );
+    //         }
+
+    //         uint256 id = _generateID(assetTypes[i], parentIds[i]);
+
+    //         _mint(account, id, amounts[i], datas[i]);
+    //         supply[id] += amounts[i];
+
+    //         if (bytes(uris[i]).length > 0) _setURI(id, uris[i]);
+
+    //         emit AssetCreated(assetTypes[i], id, amounts[i], account, uri(id));
+    //     }
+    // }
 }

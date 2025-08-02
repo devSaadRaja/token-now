@@ -1,0 +1,20 @@
+{
+    "name": "Sticker Books #123",
+    "description": "Sticker Books is a unique digital collection celebrating the nostalgia of collecting and trading stickers. Each book represents a curated compilation of rare, animated, and interactive stickers that can be collected, traded, and showcased. Perfect for both casual collectors and dedicated sticker enthusiasts, these digital sticker books bring the joy of traditional sticker collecting into the Web3 era.",
+    "external_url": "https://stickerbook.nyc3.digitaloceanspaces.com/1736767552388-stkr-book.png",
+    "image": "https://stickerbook.nyc3.digitaloceanspaces.com/1736767552388-stkr-book.png",
+    "attributes": [
+        {
+            "trait_type": "Floors",
+            "value": "5"
+        },
+        {
+            "trait_type": "Area",
+            "value": "100 sq ft"
+        },
+        {
+            "trait_type": "Divisions per Floor",
+            "value": "10"
+        }
+    ]
+}
